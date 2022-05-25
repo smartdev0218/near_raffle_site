@@ -20,7 +20,7 @@ export const Main = (props) => {
   useEffect(async () => {
     setRaffleCreate(false);
 
-    await fetch('http://localhost:5000/api/find')
+    await fetch('https://near-raffle-server.vercel.app/api/find')
     .then(response => response.json())
     .then(data => {
       // setRaffleList(data);
@@ -35,7 +35,7 @@ export const Main = (props) => {
       
     });
 
-    await fetch('http://localhost:5000/api/findTicket')
+    await fetch('https://near-raffle-server.vercel.app/api/findTicket')
     .then(response => response.json())
     .then(data => {
       setTicketList(data);
@@ -49,7 +49,7 @@ export const Main = (props) => {
       winners.push(Math.floor(Math.random() * raffle.ticket_supply) + 1);
     }
     
-    await fetch('http://localhost:5000/api/update2', {
+    await fetch('https://near-raffle-server.vercel.app/api/update2', {
       method: 'post',
       body: JSON.stringify({id, winners}),
       headers: {
@@ -63,7 +63,7 @@ export const Main = (props) => {
     for (var i = 0 ; i < raffleList.length; i ++ ){
       if(currentTime - raffleList[i].start_raffle >= 86400000) {
         var id = raffleList[i]._id;
-        await fetch('http://localhost:5000/api/update1', {
+        await fetch('https://near-raffle-server.vercel.app/api/update1', {
           method: 'post',
           body: JSON.stringify({id}),
           headers: {
@@ -114,7 +114,7 @@ export const Main = (props) => {
     var raffle_id = raffle.raffle_id;
     var ticket_supply = raffle.ticket_supply + 1;
     var id = raffle._id;
-    await fetch('http://localhost:5000/api/registerTicket', {
+    await fetch('https://near-raffle-server.vercel.app/api/registerTicket', {
         method: 'post',
         body: JSON.stringify({account_id, raffle_id, ticket_supply}),
         headers: {
@@ -122,7 +122,7 @@ export const Main = (props) => {
         }
     });
 
-    await fetch('http://localhost:5000/api/update', {
+    await fetch('https://near-raffle-server.vercel.app/api/update', {
         method: 'post',
         body: JSON.stringify({id, ticket_supply}),
         headers: {

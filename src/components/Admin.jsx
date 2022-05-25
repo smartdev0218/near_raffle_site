@@ -14,7 +14,7 @@ export const Admin = (props) => {
 
   useEffect(async () => {
     setRaffleCreate(false);
-    await fetch('http://localhost:5000/api/find')
+    await fetch('https://near-raffle-server.vercel.app/api/find')
     .then(response => response.json())
     .then(data => {
       setRaffleList(data);
@@ -73,7 +73,7 @@ export const Admin = (props) => {
       var start_hour = new Date().getHours();
       var start_min = new Date().getMinutes();
       var winners = [0];
-      await fetch('http://localhost:5000/api/register', {
+      await fetch('https://near-raffle-server.vercel.app/api/register', {
         method: 'post',
         body: JSON.stringify({raffle_title, raffle_description, raffle_id, ticket_price, ticket_supply, win_ticket, raffle_closed, start_raffle, start_year, start_month, start_day, start_hour, start_min, base64String, winners}),
         headers: {

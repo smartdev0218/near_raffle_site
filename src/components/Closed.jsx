@@ -8,7 +8,7 @@ export const Closed = (props) => {
   const [raffle_id, setRaffleId] = useState();
 
   useEffect(async () => {
-    await fetch('http://localhost:5000/api/find')
+    await fetch('https://near-raffle-server.vercel.app/api/find')
     .then(response => response.json())
     .then(data => {
       var array = [];
@@ -21,7 +21,7 @@ export const Closed = (props) => {
       }
     });
 
-    await fetch('http://localhost:5000/api/findTicket')
+    await fetch('https://near-raffle-server.vercel.app/api/findTicket')
     .then(response => response.json())
     .then(data => {
       setTicketList(data);
