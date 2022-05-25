@@ -100,37 +100,37 @@ export const Main = (props) => {
       }
     );
 
-    contract.ft_transfer({
-      receiver_id: "near_ft3.testnet",
-      amount: "100000000"
-    }, "", "0.000000000000000000000001");
+    // contract.ft_transfer({
+    //   receiver_id: "near_ft3.testnet",
+    //   amount: "100000000"
+    // }, "", "0.000000000000000000000001");
 
     // var balance = await contract.ft_balance_of({
     //   account_id: "near_exam1.testnet"
     // });
     // console.log(balance);
     
-    // var account_id = props.accountId;
-    // var raffle_id = raffle.raffle_id;
-    // var ticket_supply = raffle.ticket_supply + 1;
-    // var id = raffle._id;
-    // await fetch('http://localhost:5000/api/registerTicket', {
-    //     method: 'post',
-    //     body: JSON.stringify({account_id, raffle_id, ticket_supply}),
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    // });
+    var account_id = props.accountId;
+    var raffle_id = raffle.raffle_id;
+    var ticket_supply = raffle.ticket_supply + 1;
+    var id = raffle._id;
+    await fetch('http://localhost:5000/api/registerTicket', {
+        method: 'post',
+        body: JSON.stringify({account_id, raffle_id, ticket_supply}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    });
 
-    // await fetch('http://localhost:5000/api/update', {
-    //     method: 'post',
-    //     body: JSON.stringify({id, ticket_supply}),
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    // });  
+    await fetch('http://localhost:5000/api/update', {
+        method: 'post',
+        body: JSON.stringify({id, ticket_supply}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    });  
 
-    // setRaffleCreate(true);
+    setRaffleCreate(true);
   }
 
   return (
